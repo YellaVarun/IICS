@@ -1,0 +1,148 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Yumx1XmgaabclvA-gt-4726460-2020-04-23T00:38:12.808Z::pd.xml</types1:EntryId>
+      <types1:Name>Calculator-ParallelProcessing</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>V1</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>varun.kumar92</types1:CreatedBy>
+      <types1:CreationDate>2020-04-23T00:38:13Z</types1:CreationDate>
+      <types1:ModifiedBy>varun.kumar92</types1:ModifiedBy>
+      <types1:ModificationDate>2020-05-01T19:16:53Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>varun.kumar92</types1:PublishedBy>
+      <types1:PublicationDate>2020-05-01T19:16:57Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Calculator-ParallelProcessing/Calculator-ParallelProcessing.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Calculator-ParallelProcessing"
+                  name="Calculator-ParallelProcessing"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>V1</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="NumberA" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="NumberB" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Div" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Sum" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Div_Temp" type="reference">
+                  <options>
+                     <option name="referenceTo">CalculatorAppConnection:Divide_AT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7wA6mRl8JT0fbujWxguvKR</option>
+                  </options>
+               </field>
+               <field description="" name="Sum_Temp" type="reference">
+                  <options>
+                     <option name="referenceTo">CalculatorAppConnection:Add_AT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7wA6mRl8JT0fbujWxguvKR</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="normal">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k8hng0bq" targetId="k8hng0bp"/>
+               </start>
+               <assignment id="k8hng0bp">
+                  <title>ConfigureInput</title>
+                  <operation source="field" to="temp.Div_Temp[1]/intA">input.NumberA</operation>
+                  <operation source="field" to="temp.Div_Temp[1]/intB">input.NumberB</operation>
+                  <operation source="field" to="temp.Sum_Temp[1]/intA">input.NumberA</operation>
+                  <operation source="field" to="temp.Sum_Temp[1]/intB">input.NumberA</operation>
+                  <link id="k8jmuoa3" targetId="k8jmuoa2"/>
+               </assignment>
+               <assignment id="k8jmuod4">
+                  <title>ConfgiureOutput</title>
+                  <operation source="field" to="output.Div">output.DivideResponse[1]/DivideResult</operation>
+                  <operation source="field" to="output.Sum">output.AddResponse[1]/AddResult</operation>
+                  <link id="k8jmuod6" targetId="k8jmhwp3"/>
+               </assignment>
+               <container id="k8jmuoa2" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="k8jmuoa6">
+                     <service id="k8jmuoae">
+                        <title>Div_Service</title>
+                        <serviceName>CalculatorAppConnection:Divide</serviceName>
+                        <serviceGUID>7wA6mRl8JT0fbujWxguvKR</serviceGUID>
+                        <serviceInput>
+                           <parameter name="Divide" source="field">temp.Div_Temp</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="k8jmuoa7" targetId="k8jmuoa2" type="containerLink"/>
+                  </flow>
+                  <flow id="k8jmuoa9">
+                     <service id="k8jmuobb">
+                        <title>Sum_Service</title>
+                        <serviceName>CalculatorAppConnection:Add</serviceName>
+                        <serviceGUID>7wA6mRl8JT0fbujWxguvKR</serviceGUID>
+                        <serviceInput>
+                           <parameter name="Add" source="field">temp.Sum_Temp</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="k8jmuoaa" targetId="k8jmuoa2" type="containerLink"/>
+                  </flow>
+                  <link id="k8jmuoa5" targetId="k8jmuoa6" type="containerLink"/>
+                  <link id="k8jmuoa8" targetId="k8jmuoa9" type="containerLink"/>
+                  <link id="k8jmuod5" targetId="k8jmuod4"/>
+               </container>
+               <end id="k8jmhwp3"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>baa3d9cc-e640-4d57-b256-3d8a2163c4eb</ns1:Id>
+               <ns1:Name>Input_Cal</ns1:Name>
+               <ns1:CreatedBy>varun.kumar92</ns1:CreatedBy>
+               <ns1:CreationDate>2020-04-23T00:38:13Z</ns1:CreationDate>
+               <ns1:ModifiedBy>varun.kumar92</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2020-04-27T17:41:59Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "NumberA": 10,
+	 "NumberB": 2
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>1djngBr2BlgkUQMBPhHLeL</types1:GUID>
+      <types1:DisplayName>Calculator-ParallelProcessing</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-05-02T22:49:47.906Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,68 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Ugbcggaaaaa-gt-4591894-2020-04-23T00:38:11.742Z::conn.xml</types1:EntryId>
+      <types1:Name>ac-error-fileWriter</types1:Name>
+      <types1:ParentFlowIds>zET1cnFKi9zhFty-gt-4591934-2020-04-23T00:38:12.418Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>V1</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:WIN2012-02042019-00009</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>varun.kumar92</types1:CreatedBy>
+      <types1:CreationDate>2020-04-23T00:38:12Z</types1:CreationDate>
+      <types1:ModifiedBy>varun.kumar92</types1:ModifiedBy>
+      <types1:ModificationDate>2020-05-01T19:14:33Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>varun.kumar92</types1:PublishedBy>
+      <types1:PublicationDate>2020-05-01T19:17:50Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/ac-error-fileWriter/ac-error-fileWriter.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="ac-error-fileWriter"
+                     label="ac-error-fileWriter"
+                     name="ac-error-fileWriter">
+            <description>V1</description>
+            <tags>.agent:WIN2012-02042019-00009</tags>
+            <agent>WIN2012-02042019-00009</agent>
+            <attributes/>
+            <producers>
+               <producer enabled="true" name="ErrorLogger" typeName="DelimitedContentWriter">
+                  <description>Use this event target to serialize process objects to delimited content files, such as CSV, and save them to files on a disk.</description>
+                  <attributes>
+                     <attribute encrypted="false" name="directoryName" value="C:\"/>
+                     <attribute encrypted="false" name="fileExist" value="Append"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="delimiter" value="|"/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="skipHeaders" value="false"/>
+                     <attribute encrypted="false" name="lineEnding" value="Windows"/>
+                  </attributes>
+               </producer>
+            </producers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           type="File"
+                           uuid="ac000300-d9fe-11e4-8830-0800200c9a66">
+               <description>Provides connections to file monitoring brokers.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>8HRUAFXufIwh7oqglHCsMJ</types1:GUID>
+      <types1:DisplayName>ac-error-fileWriter</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-05-02T22:49:47.774Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

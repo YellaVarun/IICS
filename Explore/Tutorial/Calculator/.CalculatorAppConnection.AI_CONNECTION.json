@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "7wA6mRl8JT0fbujWxguvKR",
+    "name" : "CalculatorAppConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "vDoyeG3vASaaaaa-gt-4591924-2020-04-23T00:38:12.353Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "V1",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

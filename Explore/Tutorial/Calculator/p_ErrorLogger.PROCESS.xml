@@ -1,0 +1,330 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>zET1cnFKi9zhFty-gt-4591934-2020-04-23T00:38:12.418Z::pd.xml</types1:EntryId>
+      <types1:Name>p_ErrorLogger</types1:Name>
+      <types1:ParentFlowIds>6kbeJHQjATO9pH8-gt-4726472-2020-04-23T00:38:12.928Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>V1</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:WIN2012-02042019-00009,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>varun.kumar92</types1:CreatedBy>
+      <types1:CreationDate>2020-04-23T00:38:12Z</types1:CreationDate>
+      <types1:ModifiedBy>varun.kumar92</types1:ModifiedBy>
+      <types1:ModificationDate>2020-05-01T19:15:52Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>varun.kumar92</types1:PublishedBy>
+      <types1:PublicationDate>2020-05-01T19:17:27Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p_ErrorLogger/p_ErrorLogger.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p_ErrorLogger"
+                  name="p_ErrorLogger"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>V1</description>
+            <tags>.agent:WIN2012-02042019-00009,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_DateTimestamp"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_uniqueId" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_PID" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Status" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Errorcode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ErrorDescription"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Severity" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ErrorDetail"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_errorFileDir"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_errorFileName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_errorRows" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_writeFile" type="reference">
+                  <options>
+                     <option name="referenceTo">ac-error-fileWriter:SerializeToDelimitedContentTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8HRUAFXufIwh7oqglHCsMJ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_procTitle" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>WIN2012-02042019-00009</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k89z7fmh" targetId="k89z7fmg"/>
+               </start>
+               <assignment id="k89z7fmg">
+                  <title>Assign Error Details</title>
+                  <operation source="formula" to="temp.tmp_errorRows">
+                     <expression language="XQuery">&lt;LogRow&gt;
+    	&lt;DateTime&gt;{$input.in_DateTimestamp}&lt;/DateTime&gt;
+        &lt;ProcessName&gt;{ $input.in_ProcessName }&lt;/ProcessName&gt;
+        &lt;UniqueId&gt;{$input.in_uniqueId }&lt;/UniqueId&gt;
+        &lt;IICSProcessID&gt;{$input.in_PID }&lt;/IICSProcessID&gt;
+        &lt;Status&gt;{$input.in_Status} &lt;/Status&gt;
+        &lt;ErrorCode&gt;{$input.in_Errorcode} &lt;/ErrorCode&gt;
+        &lt;ErrorMsg&gt;{$input.in_ErrorDescription} &lt;/ErrorMsg&gt;
+        &lt;ErrorDetail&gt;{$input.in_ErrorDetail} &lt;/ErrorDetail&gt;
+        &lt;Severity&gt;{$input.in_Severity} &lt;/Severity&gt;
+&lt;/LogRow&gt;</expression>
+                  </operation>
+                  <link id="k89z7fmo" targetId="k89z7fmn"/>
+               </assignment>
+               <assignment id="k89z7fv8">
+                  <title>Assignment to tmp_procTitle</title>
+                  <operation source="formula" to="temp.tmp_procTitle">
+                     <expression language="XQuery">ipd:setProcessTitle(fn:concat("ErrorHandler-", $input.in_ProcessName ,"-",$input.in_PID,"-SUCCESS"))</expression>
+                  </operation>
+                  <link id="k89z7fva" targetId="c"/>
+               </assignment>
+               <subflow id="k89z7fmn">
+                  <title>p_fileExists</title>
+                  <subflowGUID>4IdGdvNCjYqhJXqUicaBIL</subflowGUID>
+                  <subflowPath>p_fileExists</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="fileName" source="formula" updatable="true">
+                        <expression language="XQuery">replace('c:\'||$input.in_errorFileDir||$input.in_errorFileName,'\\','//')</expression>
+                     </parameter>
+                  </input>
+                  <outputDef>
+                     <field name="fileExists" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="k89z7fnt" targetId="k89z7fns"/>
+               </subflow>
+               <container id="k89z7fns" type="exclusive">
+                  <title>fileExists</title>
+                  <flow id="k89z7fnw">
+                     <assignment id="k89z7foj">
+                        <title>Assign Contents Without Headers</title>
+                        <operation source="formula" to="temp.tmp_writeFile[1]/header">
+                           <expression language="XQuery">(: custom headers are necessary to make sure that we get a correct order of columns in the generated file :)
+(
+&lt;Header&gt;
+   &lt;fieldIndex&gt;1&lt;/fieldIndex&gt;
+   &lt;name&gt;DateTime&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;2&lt;/fieldIndex&gt;
+   &lt;name&gt;ProcessName&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;3&lt;/fieldIndex&gt;
+   &lt;name&gt;IICSProcessID&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;4&lt;/fieldIndex&gt;
+   &lt;name&gt;UniqueId&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;5&lt;/fieldIndex&gt;
+   &lt;name&gt;Status&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;6&lt;/fieldIndex&gt;
+   &lt;name&gt;ErrorCode&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;7&lt;/fieldIndex&gt;
+   &lt;name&gt;ErrorMsg&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;8&lt;/fieldIndex&gt;
+   &lt;name&gt;ErrorDetail&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;9&lt;/fieldIndex&gt;
+   &lt;name&gt;Severity&lt;/name&gt;
+&lt;/Header&gt;
+)
+</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_writeFile[1]/skipHeaders">true</operation>
+                        <operation source="field" to="temp.tmp_writeFile[1]/fileName">input.in_errorFileName</operation>
+                        <operation source="field" to="temp.tmp_writeFile[1]/customObjects">temp.tmp_errorRows</operation>
+                        <operation source="field" to="temp.tmp_writeFile[1]/filePath">input.in_errorFileDir</operation>
+                        <link id="k89z7fr0" targetId="k89z7fqz"/>
+                     </assignment>
+                     <service id="k89z7fqz">
+                        <title>ErrorLogger</title>
+                        <serviceName>ac-error-fileWriter:ErrorLogger</serviceName>
+                        <serviceGUID>8HRUAFXufIwh7oqglHCsMJ</serviceGUID>
+                        <serviceInput>
+                           <parameter name="serializationTask" source="field" updatable="true">temp.tmp_writeFile</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="k89z7fnx" targetId="k89z7fns" type="containerLink"/>
+                  </flow>
+                  <flow id="k89z7fnz">
+                     <assignment id="k89z7fss">
+                        <title>Assign Contents With Headers</title>
+                        <operation source="formula" to="temp.tmp_writeFile[1]/header">
+                           <expression language="XQuery">(: custom headers are necessary to make sure that we get a correct order of columns in the generated file :)
+(
+&lt;Header&gt;
+   &lt;fieldIndex&gt;1&lt;/fieldIndex&gt;
+   &lt;name&gt;DateTime&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;2&lt;/fieldIndex&gt;
+   &lt;name&gt;ProcessName&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;3&lt;/fieldIndex&gt;
+   &lt;name&gt;IICSProcessID&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;4&lt;/fieldIndex&gt;
+   &lt;name&gt;UniqueId&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;5&lt;/fieldIndex&gt;
+   &lt;name&gt;Status&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;6&lt;/fieldIndex&gt;
+   &lt;name&gt;ErrorCode&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;7&lt;/fieldIndex&gt;
+   &lt;name&gt;ErrorMsg&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;8&lt;/fieldIndex&gt;
+   &lt;name&gt;ErrorDetail&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;9&lt;/fieldIndex&gt;
+   &lt;name&gt;Severity&lt;/name&gt;
+&lt;/Header&gt;
+)
+</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_writeFile[1]/skipHeaders">false</operation>
+                        <operation source="field" to="temp.tmp_writeFile[1]/fileName">input.in_errorFileName</operation>
+                        <operation source="field" to="temp.tmp_writeFile[1]/customObjects">temp.tmp_errorRows</operation>
+                        <operation source="field" to="temp.tmp_writeFile[1]/filePath">input.in_errorFileDir</operation>
+                        <link id="k89z7ftz" targetId="k89z7fty"/>
+                     </assignment>
+                     <service id="k89z7fty">
+                        <title>ErrorLogger</title>
+                        <serviceName>ac-error-fileWriter:ErrorLogger</serviceName>
+                        <serviceGUID>8HRUAFXufIwh7oqglHCsMJ</serviceGUID>
+                        <serviceInput>
+                           <parameter name="serializationTask" source="field" updatable="true">temp.tmp_writeFile</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="k89z7fo0" targetId="k89z7fns" type="containerLink"/>
+                  </flow>
+                  <link id="k89z7fnv" targetId="k89z7fnw" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.fileExists}</arg>
+                           <arg name="right">true</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="k89z7fny" targetId="k89z7fnz" type="containerLink"/>
+                  <link id="k89z7fv9" targetId="k89z7fv8"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>8T1DvFQW2iwfOtRvOOthil</types1:GUID>
+      <types1:DisplayName>p_ErrorLogger</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-05-02T22:49:47.887Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

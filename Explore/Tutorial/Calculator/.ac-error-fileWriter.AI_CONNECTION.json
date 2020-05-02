@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "8HRUAFXufIwh7oqglHCsMJ",
+    "name" : "ac-error-fileWriter",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Ugbcggaaaaa-gt-4591894-2020-04-23T00:38:11.742Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "V1",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

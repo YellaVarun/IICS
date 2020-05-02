@@ -1,0 +1,64 @@
+{
+  "objectInfo" : {
+    "id" : "8T1DvFQW2iwfOtRvOOthil",
+    "name" : "p_ErrorLogger",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "zET1cnFKi9zhFty-gt-4591934-2020-04-23T00:38:12.418Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "V1",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "4IdGdvNCjYqhJXqUicaBIL",
+    "name" : "p_fileExists",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Wiaaa-gt-4591904-2020-04-23T00:38:11.788Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "V1",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Tutorial/Calculator"
+  }, {
+    "id" : "8HRUAFXufIwh7oqglHCsMJ",
+    "name" : "ac-error-fileWriter",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Ugbcggaaaaa-gt-4591894-2020-04-23T00:38:11.742Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "V1",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Tutorial/Calculator"
+  } ]
+}
